@@ -15,6 +15,7 @@ const Post = (props: Props) => {
       <div className="mb-4">
         <div className="flex items-center mb-2">
           <Link href={`/profile/${post.authorId}`}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className="w-10 h-10 rounded-full mr-2"
               src={post.author.profile?.profileImageUrl}

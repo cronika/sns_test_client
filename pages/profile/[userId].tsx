@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import React from "react";
 import apiClient from "../lib/apiClient";
 import { PostType, Profile } from "../types";
@@ -8,8 +8,10 @@ type Props = {
   posts: PostType[];
 };
 
-export const getServerSideProps: GetServerSideProps = async (content: any) => {
-  const { userId } = content.query;
+export const getServerSideProps: GetServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const userId = context.query.userId as string;
 
   try {
     const profileResponse = await apiClient.get(`/users/profile/${userId}`);
@@ -34,6 +36,7 @@ const userProfile = ({ profile, posts }: Props) => {
       <div className="w-full max-w-xl mx-auto">
         <div className="bg-white shadow-md rounded-lg p-6 mb-4">
           <div className="flex items-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className="w-20 h-20 rounded-full mr-4"
               alt="User Avatar"
@@ -51,6 +54,7 @@ const userProfile = ({ profile, posts }: Props) => {
           <div className="bg-white shadow-md rounded p-4 mb-4" key={post.id}>
             <div className="mb-4">
               <div className="flex items-center mb-2">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   className="w-10 h-10 rounded-full mr-2"
                   alt="User Avatar"
