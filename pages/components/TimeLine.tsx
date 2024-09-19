@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Post from "./Post";
 import apiClient from "../lib/apiClient";
-import { PostType } from "../types";
+import { PostType } from "@/types";
 
 const TimeLine = () => {
   const [postText, setPostText] = useState<string>("");

@@ -1,6 +1,6 @@
 import React from "react";
-import { PostType } from "../types";
 import Link from "next/link";
+import { PostType } from "@/types";
 type Props = {
   post: PostType;
 };
